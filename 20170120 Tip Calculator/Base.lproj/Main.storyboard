@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,104 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter bill amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bmh-Y6-axs">
+                                <rect key="frame" x="37.5" y="92" width="300" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="M2e-Fn-Gih"/>
+                                    <constraint firstAttribute="height" constant="30" id="l7w-sy-21q"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tip %" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eFF-th-UTO">
+                                <rect key="frame" x="37" y="182" width="89" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="89" id="OTX-4m-YQY"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="setTextTipChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="sqr-0Q-1ko"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qme-nJ-JhJ">
+                                <rect key="frame" x="37" y="144" width="130" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="r8Q-7u-j6Y"/>
+                                    <constraint firstAttribute="width" constant="130" id="xBU-IE-C1W"/>
+                                </constraints>
+                                <state key="normal" title="Calculate 15%">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressTipButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I11-Px-7Pc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPe-kJ-ezf">
+                                <rect key="frame" x="37" y="236" width="200" height="100"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="brt-1c-f6v"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="p8O-A4-AhZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="fm6-om-GgR">
+                                <rect key="frame" x="193" y="144" width="147" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="143" id="rsK-17-AL8"/>
+                                    <constraint firstAttribute="height" constant="30" id="zIQ-TT-aV5"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="slideSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="NMi-4a-cSg"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56d-v5-fbW">
+                                <rect key="frame" x="27" y="92" width="11" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="fqw-Oh-ILc"/>
+                                    <constraint firstAttribute="width" constant="11" id="z6B-wb-M76"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bmh-Y6-axs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="72" id="5w4-v3-zs5"/>
+                            <constraint firstItem="eFF-th-UTO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="ET0-4d-Z5C"/>
+                            <constraint firstItem="56d-v5-fbW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="OFk-jO-Cxb"/>
+                            <constraint firstItem="eFF-th-UTO" firstAttribute="top" secondItem="Bmh-Y6-axs" secondAttribute="bottom" constant="60" id="SGJ-zp-Vs1"/>
+                            <constraint firstItem="fm6-om-GgR" firstAttribute="centerY" secondItem="Qme-nJ-JhJ" secondAttribute="centerY" id="UPG-jV-Uzp"/>
+                            <constraint firstItem="eFF-th-UTO" firstAttribute="top" secondItem="Qme-nJ-JhJ" secondAttribute="bottom" constant="8" id="X0D-Qb-dc6"/>
+                            <constraint firstItem="Qme-nJ-JhJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="bjV-1j-FMx"/>
+                            <constraint firstItem="Bmh-Y6-axs" firstAttribute="leading" secondItem="56d-v5-fbW" secondAttribute="trailing" constant="-0.5" id="btE-HV-tGn"/>
+                            <constraint firstItem="fm6-om-GgR" firstAttribute="leading" secondItem="Qme-nJ-JhJ" secondAttribute="trailing" constant="28" id="fXj-G4-JF4"/>
+                            <constraint firstItem="lPe-kJ-ezf" firstAttribute="top" secondItem="Bmh-Y6-axs" secondAttribute="bottom" constant="114" id="pL3-Yy-9Eu"/>
+                            <constraint firstItem="lPe-kJ-ezf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="pyc-Rh-9wQ"/>
+                            <constraint firstItem="56d-v5-fbW" firstAttribute="centerY" secondItem="Bmh-Y6-axs" secondAttribute="centerY" id="v6d-CG-6NH"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="billTextField" destination="Bmh-Y6-axs" id="zNT-ba-jYY"/>
+                        <outlet property="tipAmountLabel" destination="lPe-kJ-ezf" id="ag3-u0-vqa"/>
+                        <outlet property="tipButton" destination="Qme-nJ-JhJ" id="URQ-63-cnQ"/>
+                        <outlet property="tipSlider" destination="fm6-om-GgR" id="kdl-Ve-gMq"/>
+                        <outlet property="tipTextField" destination="eFF-th-UTO" id="TOu-s7-OlO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>
