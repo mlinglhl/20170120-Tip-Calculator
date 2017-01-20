@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipAmountLabel;
 @property (weak, nonatomic) IBOutlet UISlider *tipSlider;
 @property (weak, nonatomic) IBOutlet UITextField *tipTextField;
+@property NSNumberFormatter *currencyFormatter;
 @end
 
 @implementation ViewController
@@ -27,6 +28,8 @@
     [self.tipTextField addTarget:self action:@selector(hideKeyboard:) forControlEvents:UIControlEventEditingDidEnd];
     self.tipTextField.delegate = self;
     self.billTextField.delegate = self;
+    self.currencyFormatter = [NSNumberFormatter new];
+    [self.currencyFormatter setNumberStyle:NSNumberFormatterCurrencyPluralStyle];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,13 +38,12 @@
 }
 
 - (IBAction)pressTipButton:(UIButton *)sender {
-    self.tipAmountLabel.text = [NSString stringWithFormat:@"$%.2f", ([self.billTextField.text intValue]*self.tipSlider.value/100)];
+    self.tipAmountLabel.text = [NSString stringWithFormat:@"$%@",[self.currencyFormatter stringFromNumber:[NSNumber numberWithFloat:([self.billTextField.text intValue]*self.tipSlider.value/100)]]];
 }
 
 - (IBAction)setTextTipChange:(UITextField *)sender {
-    float bill = [self.billTextField.text intValue];
     float percent = [self.tipTextField.text intValue];
-    self.tipAmountLabel.text = [NSString stringWithFormat:@"$%.2f", (bill*percent/100)];
+    self.tipAmountLabel.text = [NSString stringWithFormat:@"$%@",[self.currencyFormatter stringFromNumber:[NSNumber numberWithFloat:([self.billTextField.text intValue]*percent/100)]]];
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
